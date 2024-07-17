@@ -14,7 +14,9 @@
 <h1>News Page</h1>
 <p>{news}{msg}</p>
 <p>{count}</p>
+<a href="/contact">Contact</a>
+
 <a href="/">Home</a>
-<button on:click={increment} aria-label="Increase the counter by one">
+<!-- <button on:click={increment} aria-label="Increase the counter by one">
   Hit Me
-</button>
+</button> -->
