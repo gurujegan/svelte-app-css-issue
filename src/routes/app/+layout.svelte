@@ -1,5 +1,5 @@
 <script>
-	import '../app.css'
+	import '$lib/assets/css/app.css'
 	import 'tailwindcss/tailwind.css'
 	import Sidebar from '$lib/components/Sidebar.svelte';
 </script>
@@ -34,6 +34,7 @@
 		max-width: 64rem;
 		margin: 0 auto;
 		box-sizing: border-box;
+		margin-left: 264px;
 	}
 
 	footer {
