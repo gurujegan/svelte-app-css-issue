@@ -3,38 +3,34 @@
 	export let data;
 </script>
 
-<div class="hero bg-base-200 min-h-screen">
-    <div class="hero-content flex-col lg:flex-row-reverse">
-      <div class="text-center lg:text-left">
-        <h1 class="text-9xl">Welcome to Tailwind</h1>
-        <h1 class="text-5xl font-bold">Login now!</h1>
-        <p class="py-6">
-          Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem
-          quasi. In deleniti eaque aut repudiandae et a id nisi.
-        </p>
+<div
+  class="hero h-screen"
+  style="background-image: url(https://img.daisyui.com/images/stock/photo-1507358522600-9f71e620c44e.jpg);">
+  <div class="hero-overlay bg-opacity-60"></div>
+  <div class="hero-content text-neutral-content text-center h-1/2 w-1/2 bg-blue-950 bg-opacity-60 rounded-2xl">
+    <div class="max-w-md">
+      <h1 class="mb-5 text-5xl font-bold">Login!</h1>
+      <div class="mb-10 flex-col h-full">
+        <div class="flex-col justify-evenly">
+        <label for="e-mail"><h5 class="text-start">E-Mail:</h5></label>
+        <input
+        name="e-mail"
+        type="text"
+        placeholder="Type here"
+        class="input input-bordered input-secondary w-full max-w-xs" />
+        </div>
+        <div class="flex-col justify-evenly">
+        <label for="password"><h5 class="text-start">Password:</h5></label>
+        <input
+        name="password"
+        type="password"
+        placeholder="Type here"
+        class="input input-bordered input-secondary w-full max-w-xs" />
+        </div>
+        <button class="btn btn-primary mt-7">Login</button>
       </div>
-      <div class="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
-        <form class="card-body">
-          <div class="form-control">
-            <label class="label">
-              <span class="label-text">Email</span>
-            </label>
-            <input type="email" placeholder="email" class="input input-bordered" required />
-          </div>
-          <div class="form-control">
-            <label class="label">
-              <span class="label-text">Password</span>
-            </label>
-            <input type="password" placeholder="password" class="input input-bordered" required />
-            <label class="label">
-              <a href="#" class="label-text-alt link link-hover">Forgot password?</a>
-            </label>
-          </div>
-          <div class="form-control mt-6">
-            <button class="btn btn-primary">Login</button>
-          </div>
-        </form>
-      </div>
+      <strong>All rights reserved</strong>
     </div>
   </div>
+</div>
 
