@@ -1,9 +1,11 @@
 <script>
+import CenterElementContainer from '$lib/components/container/CenterElements.svelte';
+
 	/** @type {import('./$types').PageData} */
 	export let data;
 </script>
 
-<div class="md-container w-full h-screen flex flex-col items-center justify-center bg-white">
+<CenterElementContainer>
   <h1>TSS</h1>
   <div class="card bg-base-100 w-full max-w-sm shadow-2xl">
     <form class="card-body ">
@@ -27,4 +29,4 @@
       </div>
     </form>
   </div>
-</div>
+</CenterElementContainer>

@@ -1,4 +1,5 @@
 <script>
+
 	let msg = 'Welcome to my new page!!!!!!';
 
   const news = 'Page is coming soon!!!'

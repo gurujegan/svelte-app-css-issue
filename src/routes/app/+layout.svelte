@@ -2,14 +2,17 @@
 	import '$lib/assets/css/app.css'
 	import 'tailwindcss/tailwind.css'
 	import Sidebar from '$lib/components/Sidebar.svelte';
+	import DrawerContentContainer from '$lib/components/container/DrawerContentContainer.svelte';
 </script>
 
 <div class="app">
 	<!-- Custom component-->
 	<Sidebar />
 
-	<main>		
+	<main>
+		<DrawerContentContainer>
 		<slot />
+	</DrawerContentContainer>		
 	</main>
 
 	<footer>
