@@ -1,24 +1,34 @@
 <script>
-	import '$lib/assets/css/app.css'
-	import 'tailwindcss/tailwind.css'
-	import Sidebar from '$lib/components/Sidebar.svelte';
+	import '$lib/assets/css/app.css';
+	import 'tailwindcss/tailwind.css';
 	import DrawerContentContainer from '$lib/components/container/DrawerContentContainer.svelte';
+	import Footer from '$lib/components/layout/Footer.svelte';
+	import SideBar from '$lib/components/layout/SideBar.svelte';
+	import Header from '$lib/components/layout/Header.svelte';
+
+	let isDrawerOpen = false;
 </script>
 
 <div class="app">
-	<!-- Custom component-->
-	<Sidebar />
+	<div class="drawer lg:drawer-open">
+		<input id="my-drawer" type="checkbox" class="drawer-toggle" bind:checked={isDrawerOpen} />
+		<div class="drawer-content flex flex-col">
+			<!-- Header -->
+			<Header />
 
-	<main>
-		<DrawerContentContainer>
-		<slot />
-	</DrawerContentContainer>		
-	</main>
+			<!-- Page content here -->
+			<main>
+				<DrawerContentContainer>
+					<slot />
+				</DrawerContentContainer>
+			</main>
 
-	<footer>
-		<p>visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to learn SvelteKit</p>
-	</footer>
-	
+			<!-- Footer -->
+			<Footer />
+		</div>
+
+		<SideBar />
+	</div>
 </div>
 
 <style>
@@ -35,9 +45,9 @@
 		padding: 1rem;
 		width: 100%;
 		max-width: 64rem;
-		margin: 0 auto;
+		/* margin: 0 auto; */
 		box-sizing: border-box;
-		margin-left: 264px;
+		/* margin-left: 264px; */
 	}
 
 	footer {
