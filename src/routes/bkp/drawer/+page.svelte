@@ -1,6 +1,6 @@
 <script>
 	import DrawerContentContainer from '$lib/components/container/DrawerContentContainer.svelte';
-	import Footer from '$lib/components/layout/Footer.svelte';
+	import Footer from '$lib/components/layout/Footer.svelte_bkp';
 	import SideBar from '$lib/components/layout/SideBar.svelte';
 	import Header from '$lib/components/layout/Header.svelte';
 
