@@ -5,6 +5,10 @@
 	import Footer from '$lib/components/layout/Footer.svelte';
 	import SideBar from '$lib/components/layout/SideBar.svelte';
 	import Header from '$lib/components/layout/Header.svelte';
+	import { setContext } from 'svelte';
+	import { user } from '$lib/stores/UserStore.js'
+
+	setContext('user', user);
 
 	let isDrawerOpen = false;
 </script>
