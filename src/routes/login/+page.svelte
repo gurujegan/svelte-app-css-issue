@@ -1,5 +1,5 @@
 <script>
-import CenterElementContainer from '$lib/components/container/CenterElements.svelte';
+import CenterElementContainer from '$lib/components/container/CenteredBodyContainer.svelte';
 
 	/** @type {import('./$types').PageData} */
 	export let data;

@@ -1,8 +1,9 @@
 <script>
+    export let label = '';
     export let value = '';
 </script>
 
-<label class="label mb-2 text-2xl font-medium">Pan Id</label>
+<label class="label mb-2 text-sm font-medium">{label}</label>
 <input
     type="text"
     placeholder="Type here"

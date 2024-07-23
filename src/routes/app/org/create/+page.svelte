@@ -1,5 +1,5 @@
 <script>
-	import CenterElements from '$lib/components/container/CenterElements.svelte';
+	import CenteredBodyContainer from '$lib/components/container/CenteredBodyContainer.svelte';
 	import { org } from '$lib/stores/OrgStore.js';
 	import { getContext } from 'svelte';
 
@@ -20,7 +20,7 @@
 	}
 </script>
 
-<CenterElements>
+<CenteredBodyContainer>
 	<form class="form-control md:w-1/2 w-full rounded">
 		<label class="label mb-2 text-2xl font-medium">Create Organization </label>
 		<input
@@ -31,6 +31,6 @@
 		/>
 		<button class="btn btn-info" on:click={createOrg}>Create Organization</button>
 	</form>
-</CenterElements>
+</CenteredBodyContainer>
 
 {JSON.stringify($org)}

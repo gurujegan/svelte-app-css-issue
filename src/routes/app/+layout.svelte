@@ -1,7 +1,7 @@
 <script>
 	import '$lib/assets/css/app.css';
 	import 'tailwindcss/tailwind.css';
-	import DrawerContentContainer from '$lib/components/container/DrawerContentContainer.svelte';
+	import DefaultBodyContainer from '$lib/components/container/DefaultBodyContainer.svelte';
 	import Footer from '$lib/components/layout/Footer.svelte';
 	import SideBar from '$lib/components/layout/SideBar.svelte';
 	import Header from '$lib/components/layout/Header.svelte';
@@ -22,9 +22,9 @@
 
 			<!-- Page content here -->
 			<main>
-				<DrawerContentContainer>
+				<DefaultBodyContainer>
 					<slot />
-				</DrawerContentContainer>
+				</DefaultBodyContainer>
 			</main>
 
 			<!-- Footer -->
