@@ -1,6 +1,7 @@
 <script>
 	import CenteredBodyContainer from '$lib/components/container/CenteredBodyContainer.svelte';
 	import LabelInput from '$lib/components/elements/LabelInput.svelte';
+    import AnimatedButton from '$lib/components/button/AnimatedButton.svelte';
 	import { customerAccount } from '$lib/stores/CustomerAccountStore.js';
 	import { getContext } from 'svelte';
 	import { org } from '$lib/stores/OrgStore.js';
@@ -44,7 +45,7 @@
 		<LabelInput label="Bank Name" bind:value={formData.bankName}></LabelInput>
 		<LabelInput label="E-Mail" bind:value={formData.email}></LabelInput>
 		<LabelInput label="Mobile No" bind:value={formData.mobNo}></LabelInput>
-		<button class="btn btn-info" on:click={createCustomerAccount}>Create Account</button>
+        <AnimatedButton>Create new account</AnimatedButton>
 	</form>
 </CenteredBodyContainer>
 
