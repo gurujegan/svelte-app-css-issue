@@ -1,12 +1,12 @@
 <script>
-    export let label = '';
-    export let value = '';
+    export let formElement;
+    export let value;
 </script>
 
 <div class="w-11/12">
-<label class="label mb-2 text-sm font-medium" for={label}>{label}</label>
+<label class="label mb-2 text-sm font-medium" for={formElement.id}>{formElement.value}</label>
 <input
-    name={label}
+    name={formElement.id}
     type="text"
     placeholder="Type here"
     class="input input-bordered w-full mb-4"

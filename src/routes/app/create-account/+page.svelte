@@ -1,7 +1,5 @@
 <script>
-	import CenteredBodyContainer from '$lib/components/container/CenteredBodyContainer.svelte';
 	import LabelInput from '$lib/components/elements/LabelInput.svelte';
-	import AnimatedButton from '$lib/components/elements/button/AnimatedButton.svelte';
 	import { customerAccount } from '$lib/stores/CustomerAccountStore.js';
 	import { getContext } from 'svelte';
 	import { org } from '$lib/stores/OrgStore.js';
@@ -12,13 +10,22 @@
 	/** @type {import('./$types').PageData} */
 	export let data;
 
+	let formElements = [
+		{ id: 'panId', value: 'Pan Id' },
+		{ id: 'customerName', value: 'Customer Name' },
+		{ id: 'bankAccNo', value: 'Bank Account No' },
+		{ id: 'bankName', value: 'Bank Name' },
+		{ id: 'email', value: 'Email' },
+		{ id: 'mobNo', value: 'Mob no' }
+	];
+
 	let formData = {
-		panId: '',
-		customerName: '',
-		bankAccNo: '',
-		bankName: '',
-		email: '',
-		mobNo: '',
+		// panId: '',
+		// customerName: '',
+		// bankAccNo: '',
+		// bankName: '',
+		// email: '',
+		// mobNo: '',
 		userId: $user.userId,
 		orgId: '',
 		createdAt: Date.now().toString(),
@@ -41,12 +48,10 @@
 				<option value="2">Org2</option>
 			</select>
 		</div>
-		<LabelInput label="Pan Id" bind:value={formData.panId}></LabelInput>
-		<LabelInput label="Customer Name" bind:value={formData.customerName}></LabelInput>
-		<LabelInput label="Bank Account No" bind:value={formData.bankAccNo}></LabelInput>
-		<LabelInput label="Bank Name" bind:value={formData.bankName}></LabelInput>
-		<LabelInput label="E-Mail" bind:value={formData.email}></LabelInput>
-		<LabelInput label="Mobile No" bind:value={formData.mobNo}></LabelInput>
+
+		{#each formElements as formElement}
+			<LabelInput formElement={formElement} bind:value={formData[formElement.id]}></LabelInput>
+		{/each}
 
 		<div class="w-11/12"></div>
 
@@ -76,4 +81,4 @@
 	</form>
 </DefaultBodyContainer>
 
-<!-- {JSON.stringify($customerAccount)} -->
+{JSON.stringify($customerAccount)}
