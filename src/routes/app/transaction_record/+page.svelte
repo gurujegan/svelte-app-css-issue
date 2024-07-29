@@ -3,13 +3,14 @@
 	import LabelInput from '$lib/components/elements/LabelInput.svelte';
 	import { org } from '$lib/stores/OrgStore.js';
 	import { writable } from 'svelte/store';
+	import { customerAccount } from '$lib/stores/CustomerAccountStore.js';
 
 	/** @type {import('./$types').PageData} */
 	export let data;
 
-	const savedTxns = writable([])
+	const savedTxns = writable([]);
 
-	let newItem = { id: '', description: '', amount: '', category: '' }
+	let newItem = { id: '', description: '', amount: '', category: '' };
 
 	function deleteRow(index) {
 		$savedTxns.splice(index, 1);
@@ -17,7 +18,6 @@
 	}
 
 	function addNewTxn() {
-		
 		savedTxns.set([...$savedTxns, newItem]);
 		newItem = { id: '', description: '', amount: '', category: '' };
 	}
@@ -30,38 +30,40 @@
 
 {JSON.stringify($savedTxns)}
 
-<div class="w-full grid grid-cols-2">
-	<div class="w-11/12">
-		<label class="label mb-2 text-sm font-medium">Org Name</label>
-		<select class="select select-bordered w-full" bind:value={formData.orgId}>
-			<option disabled selected>Select Org</option>
-			<option value={$org.orgId}>{$org.orgName}</option>
-			<option value="2">Org2</option>
-		</select>
+<div class="grid grid-rows-3 grid-flow-col gap-4">
+	<div class="grid gap-4 row-span-3 ">
+		<div class="flex justify-evenly">
+			<label class="label text-sm font-medium w-1/2" for="orgName">Org Name</label>
+			<select class="select select-bordered w-1/2" bind:value={formData.orgId}>
+				<option disabled selected>Select Org</option>
+				<option value={$org.orgId}>{$org.orgName}</option>
+				<option value="2">Org2</option>
+			</select>
+		</div>
+		<div class="flex justify-evenly">
+			<label class="label text-sm font-medium w-1/2" for="accNo">Bank Account Number</label>
+			<select class="select select-bordered w-1/2" bind:value={formData.accNo}>
+				<option disabled selected>Select Account</option>
+				<option value={$org.orgId}>{$org.accNo}</option>
+				<option value="2">123456</option>
+			</select>
+		</div>
+		<div class="flex justify-evenly">
+			<label class="label text-sm font-medium w-1/2" for="bankName">Bank Name</label>
+			<input
+				name="bankName"
+				type="text"
+				placeholder="Type here"
+				class="input input-bordered w-1/2"
+				bind:value={formData.bankName}
+			/>
+		</div>
 	</div>
-</div>
-
-<div class=" flex-row flex-wrap grid grid-cols-2">
-	<div class="w-11/12">
-		<label class="label mb-2 text-sm font-medium" for="accNo">Bank Account No</label>
-		<input
-			name="accNo"
-			type="text"
-			placeholder="Type here"
-			class="input input-bordered w-full mb-4"
-			bind:value={formData.bankAccNo}
-		/>
-	</div>
-
-	<div class="w-11/12">
-		<label class="label mb-2 text-sm font-medium" for="bankName">Bank Name</label>
-		<input
-			name="bankName"
-			type="text"
-			placeholder="Type here"
-			class="input input-bordered w-full mb-4"
-			bind:value={formData.bankName}
-		/>
+	<div class="col-span-2">
+		customerName: {$customerAccount.customerName}
+		bankAccNo: {$customerAccount.bankAccNo}
+		bankName:{$customerAccount.bankName}
+		panId:{$customerAccount.panId}
 	</div>
 </div>
 
@@ -76,6 +78,41 @@
 <h1 class="text-2xl font-bold">Add New Transaction</h1>
 
 <div class="divider"></div>
+
+<button class="btn" onclick="my_modal_5.showModal()">Add New Transaction</button>
+<dialog id="my_modal_5" class="modal">
+	<div class="modal-box">
+		<div class="w-full">
+			<form class="form-control flex flex-row justify-between">
+				{#each Object.entries(newItem) as [key, value]}
+					<div class="mb-4">
+						<label class="label mb-2 text-sm font-medium" for={key}
+							>{key[0].toUpperCase() + key.substr(1)}</label
+						>
+						<input
+							name={key}
+							type="text"
+							placeholder="Type here"
+							class="input input-bordered focus:bg-orange-100 focus:border-solid focus:border-2 focus:border-sky-500"
+							bind:value={newItem[key]}
+						/>
+					</div>
+				{/each}
+			</form>
+		</div>
+
+		<div class="w-full">
+			<button class="w-full btn btn-info h-8 rounded-md" on:click={addNewTxn}> Save </button>
+		</div>
+
+		<div class="modal-action">
+			<form method="dialog">
+				<!-- if there is a button in form, it will close the modal -->
+				<button class="btn">Close</button>
+			</form>
+		</div>
+	</div>
+</dialog>
 
 <div class="w-full">
 	<form class="form-control flex flex-row justify-between">
