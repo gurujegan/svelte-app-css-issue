@@ -38,8 +38,55 @@
 	}
 </script>
 
+<!-- <div class="grid grid-rows-3 grid-flow-col gap-4">
+	<div class="grid gap-4 row-span-3">
+
+	</div>
+</div> -->
+
 <DefaultBodyContainer>
-	<form class="form-control w-full rounded flex-row flex-wrap grid grid-cols-2">
+	<form class="form-control rounded grid grid-cols-3">
+		<div class="w-1/2">
+			<label class="label mb-2 text-sm font-medium">Org Name</label>
+			<select class="select select-bordered" bind:value={formData.orgId}>
+				<option disabled selected>Select Org</option>
+				<option value={$org.orgId}>{$org.orgName}</option>
+				<option value="2">Org2</option>
+			</select>
+		</div>
+
+		{#each formElements as formElement}
+			<LabelInput {formElement} bind:value={formData[formElement.id]}></LabelInput>
+		{/each}
+
+		<div class="grid gap-4 row-span-3"></div>
+
+		<div class="mt-10 w-11/12">
+			<button
+				class="w-full btn btn-info transition ease-in-out delay-150
+	hover:-translate-y-1 hover:scale-110
+	hover:bg-indigo-500 hover:text-white
+	 duration-300 h-8 rounded-md"
+				on:click={createCustomerAccount}
+			>
+				Create Customer Account
+			</button>
+		</div>
+
+		<div class="mt-10 w-11/12">
+			<button
+				class="w-full btn btn-info transition ease-in-out delay-150
+	hover:-translate-y-1 hover:scale-110
+	hover:bg-indigo-500 hover:text-white
+	 duration-300 h-8 rounded-md"
+				on:click={createCustomerAccount}
+			>
+				Reset
+			</button>
+		</div>
+	</form>
+
+	<!-- <form class="form-control w-full rounded flex-row flex-wrap grid grid-cols-2">
 		<div class="w-11/12">
 			<label class="label mb-2 text-sm font-medium">Org Name</label>
 			<select class="select select-bordered w-full" bind:value={formData.orgId}>
@@ -78,7 +125,7 @@
 				Reset
 			</button>
 		</div>
-	</form>
+	</form> -->
 </DefaultBodyContainer>
 
 {JSON.stringify($customerAccount)}
