@@ -3,7 +3,7 @@
     export let value;
 </script>
 
-<div class="w-11/12">
+<div class="w-full">
 <label class="label mb-2 text-sm font-medium" for={formElement.id}>{formElement.value}</label>
 <input
     name={formElement.id}
