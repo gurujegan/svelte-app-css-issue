@@ -11,12 +11,12 @@
 	export let data;
 
 	let formElements = [
-		// { id: 'panId', value: 'Pan Id' },
-		// { id: 'customerName', value: 'Customer Name' },
-		{ id: 'bankAccNo', value: 'Bank Account No' },
-		{ id: 'bankName', value: 'Bank Name' },
-		// { id: 'email', value: 'Email' },
-		// { id: 'mobNo', value: 'Mob no' }
+		{ id: 'panId', value: 'Pan Id' },
+		{ id: 'customerName', value: 'Customer Name' },
+		// { id: 'bankAccNo', value: 'Bank Account No' },
+		// { id: 'bankName', value: 'Bank Name' },
+		{ id: 'email', value: 'Email' },
+		{ id: 'mobNo', value: 'Mob no' }
 	];
 
 	let formData = {
@@ -37,25 +37,14 @@
 		customerAccount.set(formData);
 	}
 </script>
-<!-- <nav>
-	<div class="navbar-center">
-		<div class="flex flex-rows justify-center gap-4">
-			<label class="label mb-2 text-sm font-medium" for="cust-name">Customer Name</label>
-			<select class="select select-bordered w-1/4" bind:value={formData.orgId}>
-				<option disabled selected>Select Org</option>
-				<option value={$org.orgId}>{$org.orgName}</option>
-				<option value="2">Org2</option>
-			</select>
-		</div>
-	</div>
-</nav> -->
 
 
-	<form class="form-control flex flex-row justify-center">
-		<div class="w-1/2  gap-2">
-			<div class="rounded grid grid-rows-3 gap-2">
+<DefaultBodyContainer>
+	<form class="form-control">
+		<div class="grid grid-rows-2 w-full gap-2">
+			<div class="rounded grid grid-cols-2 gap-2">
 				<div class="w-full">
-					<label class="label mb-2 text-sm font-medium" for="cust-name">Customer Name</label>
+					<label class="label mb-2 text-sm font-medium" for="orgname">Org Name</label>
 					<select class="select select-bordered w-full" bind:value={formData.orgId}>
 						<option disabled selected>Select Org</option>
 						<option value={$org.orgId}>{$org.orgName}</option>
@@ -91,6 +80,6 @@
 			</div>
 		</div>
 	</form>
-
+</DefaultBodyContainer>
 
 {JSON.stringify($customerAccount)}

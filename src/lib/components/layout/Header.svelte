@@ -1,3 +1,20 @@
+<script>
+  import { org } from '$lib/stores/OrgStore.js';
+
+  let formData = {
+		// panId: '',
+		// customerName: '',
+		// bankAccNo: '',
+		// bankName: '',
+		// email: '',
+		// mobNo: '',
+		userId: '',
+		orgId: '',
+		createdAt: Date.now().toString(),
+		updatedAt: ''
+	};
+</script>
+
 <div class="navbar bg-base-200">
   <div class="flex-none">
     <label for="my-drawer" class="btn btn-square btn-ghost drawer-button lg:hidden">
@@ -16,10 +33,18 @@
       </svg>
     </label>
   </div>
-  <div class="flex-1">
+  <div class="navbar-start">
     <h1 class="text-xl font-bold">TSS</h1>
   </div>
-  <div class="flex-none gap-2">
+  <div class="navbar-center w-1/4">
+			<label class="label mb-2 text-sm font-medium" for="orgName">Org Name</label>
+			<select class="select select-bordered w-full" bind:value={formData.orgId}>
+				<option disabled selected>Select Org</option>
+				<option value={$org.orgId}>{$org.orgName}</option>
+				<option value="2">Org2</option>
+			</select>
+  </div>
+  <div class="navbar-end gap-2">
     <!-- <div class="form-control">
       <input type="text" placeholder="Search" class="input input-bordered w-24 md:w-auto" />
     </div> -->
