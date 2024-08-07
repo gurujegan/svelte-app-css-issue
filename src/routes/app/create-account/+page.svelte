@@ -12,7 +12,7 @@
 
 	let formElements = [
 		// { id: 'panId', value: 'Pan Id' },
-		// { id: 'customerName', value: 'Customer Name' },
+		{ id: 'customerName', value: 'Customer Name' },
 		{ id: 'bankAccNo', value: 'Bank Account No' },
 		{ id: 'bankName', value: 'Bank Name' },
 		// { id: 'email', value: 'Email' },
@@ -54,14 +54,14 @@
 	<form class="form-control flex flex-row justify-center">
 		<div class="w-1/2  gap-2">
 			<div class="rounded grid grid-rows-3 gap-2">
-				<div class="w-full">
+				<!-- <div class="w-full">
 					<label class="label mb-2 text-sm font-medium" for="cust-name">Customer Name</label>
 					<select class="select select-bordered w-full" bind:value={formData.orgId}>
 						<option disabled selected>Select Org</option>
 						<option value={$org.orgId}>{$org.orgName}</option>
 						<option value="2">Org2</option>
 					</select>
-				</div>
+				</div> -->
 
 				{#each formElements as formElement}
 					<LabelInput {formElement} bind:value={formData[formElement.id]}></LabelInput>
