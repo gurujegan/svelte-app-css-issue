@@ -1,12 +1,11 @@
 <script>
 	import LabelInput from '$lib/components/elements/LabelInput.svelte';
-	import { customerAccount } from '$lib/stores/CustomerAccountStore.js';
 	import { getContext } from 'svelte';
-	import { org } from '$lib/stores/OrgStore.js';
-	import customerStore,{newCustomer} from '$lib/stores/CustomerStore.js';
+	import { orgList, currentOrg } from '$lib/stores/OrgStore.js';
+	import customerStore from '$lib/stores/CustomerStore.js';
 	import DefaultBodyContainer from '$lib/components/container/DefaultBodyContainer.svelte';
 
-
+	let customers = customerStore.customers
 	let user = getContext('user');
 
 	/** @type {import('./$types').PageData} */
@@ -14,32 +13,19 @@
 
 	let formElements = [
 		{ id: 'customerName', value: 'Customer Name' },
-		// { id: 'bankAccNo', value: 'Bank Account No' },
-		// { id: 'bankName', value: 'Bank Name' },
 		{ id: 'mobNo', value: 'Mob no' },
 		{ id: 'email', value: 'Email' },
 		{ id: 'panId', value: 'Pan Id' },
 	];
 
-	let formData = {
-		// panId: '',
-		// customerName: '',
-		// bankAccNo: '',
-		// bankName: '',
-		// email: '',
-		// mobNo: '',
-		userId: $user.userId,
-		orgId: $org.orgId,
-		createdAt: Date.now().toString(),
-		updatedAt: ''
-	};
-
+	let newCustomer = {}
 
 	function createCustomerAccount() {
-		console.log('SDsfd');
-		// customerAccount.set(formData);
-		customerStore.addNewCustomer(formData)
+
+		customerStore.addCustomer(newCustomer)
+		newCustomer = {}
 	}
+
 </script>
 
 
@@ -49,7 +35,7 @@
 			<div class="rounded grid grid-cols-2 gap-2">
 				<!-- <div class="w-full">
 					<label class="label mb-2 text-sm font-medium" for="orgname">Org Name</label>
-					<select class="select select-bordered w-full" bind:value={formData.orgId}>
+					<select class="select select-bordered w-full" bind:value={newCustomer.orgId}>
 						<option disabled selected>Select Org</option>
 						<option value={$org.orgId}>{$org.orgName}</option>
 						<option value="2">Org2</option>
@@ -57,7 +43,7 @@
 				</div> -->
 
 				{#each formElements as formElement}
-					<LabelInput {formElement} bind:value={formData[formElement.id]}></LabelInput>
+					<LabelInput {formElement} bind:value={newCustomer[formElement.id]}></LabelInput>
 				{/each}
 			</div>
 
@@ -77,7 +63,7 @@
 		hover:-translate-y-1 hover:scale-110
 		hover:bg-indigo-500 hover:text-white
 		 duration-300 h-8 rounded-md w-1/2"
-						on:click={createCustomerAccount}
+						on:click={customerStore.reset}
 					>
 						Reset
 					</button>
@@ -86,4 +72,5 @@
 	</form>
 </DefaultBodyContainer>
 
-{JSON.stringify($customerStore)}
+{JSON.stringify($currentOrg.orgId)}
+{JSON.stringify($customers)}

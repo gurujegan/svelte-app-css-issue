@@ -1,9 +1,9 @@
 <script>
-	import LabelInput from '$lib/components/elements/LabelInput.svelte';
-	import { customerAccount } from '$lib/stores/CustomerAccountStore.js';
-	import { getContext } from 'svelte';
-	import { org } from '$lib/stores/OrgStore.js';
-	import DefaultBodyContainer from '$lib/components/container/DefaultBodyContainer.svelte';
+	import LabelInput from '$lib/components/elements/LabelInput.svelte'
+	import { getContext } from 'svelte'
+	import { customers } from '$lib/stores/CustomerStore'
+	import CustomerAccountStore,{ customerAccounts } from '$lib/stores/CustomerAccountStore.js'
+	import DefaultBodyContainer from '$lib/components/container/DefaultBodyContainer.svelte'
 
 	let user = getContext('user');
 
@@ -11,30 +11,16 @@
 	export let data;
 
 	let formElements = [
-		// { id: 'panId', value: 'Pan Id' },
-		{ id: 'customerName', value: 'Customer Name' },
 		{ id: 'bankAccNo', value: 'Bank Account No' },
 		{ id: 'bankName', value: 'Bank Name' },
-		// { id: 'email', value: 'Email' },
-		// { id: 'mobNo', value: 'Mob no' }
-	];
+	]
 
-	let formData = {
-		// panId: '',
-		// customerName: '',
-		// bankAccNo: '',
-		// bankName: '',
-		// email: '',
-		// mobNo: '',
-		userId: $user.userId,
-		orgId: '',
-		createdAt: Date.now().toString(),
-		updatedAt: ''
-	};
+	let formData = {};
 
 	function createCustomerAccount() {
-		console.log('SDsfd');
-		customerAccount.set(formData);
+
+		CustomerAccountStore.addCustomerAccount(formData);
+		formData = {}
 	}
 </script>
 <!-- <nav>
@@ -54,14 +40,15 @@
 	<form class="form-control flex flex-row justify-center">
 		<div class="w-1/2  gap-2">
 			<div class="rounded grid grid-rows-3 gap-2">
-				<!-- <div class="w-full">
-					<label class="label mb-2 text-sm font-medium" for="cust-name">Customer Name</label>
-					<select class="select select-bordered w-full" bind:value={formData.orgId}>
-						<option disabled selected>Select Org</option>
-						<option value={$org.orgId}>{$org.orgName}</option>
-						<option value="2">Org2</option>
+				<div class="w-full">
+					<label class="label mb-2 text-sm font-medium" for="cust-name">Customer</label>
+					<select class="select select-bordered w-full" bind:value={formData.custId}>
+						<option disabled selected>Select Customer</option>
+						{#each $customers as customer}
+						<option value={customer.id}>{customer.customerName} - {customer.panId}</option>
+						{/each}
 					</select>
-				</div> -->
+				</div>
 
 				{#each formElements as formElement}
 					<LabelInput {formElement} bind:value={formData[formElement.id]}></LabelInput>
@@ -93,4 +80,4 @@
 	</form>
 
 
-{JSON.stringify($customerAccount)}
+{JSON.stringify($customerAccounts)}

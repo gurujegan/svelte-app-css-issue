@@ -1,14 +1,16 @@
 <script>
 	import DefaultBodyContainer from '$lib/components/container/DefaultBodyContainer.svelte';
 	import LabelInput from '$lib/components/elements/LabelInput.svelte';
-	import { org } from '$lib/stores/OrgStore.js';
 	import { writable } from 'svelte/store';
-	import { customerAccount } from '$lib/stores/CustomerAccountStore.js';
+	import CustomerAccountStore,{ customerAccounts } from '$lib/stores/CustomerAccountStore.js';
+
 
 	/** @type {import('./$types').PageData} */
 	export let data;
 
 	const savedTxns = writable([]);
+
+	const selectedCustomerAccount = writable({})
 
 	let newItem = { id: '', description: '', amount: '', category: '' };
 
@@ -22,7 +24,11 @@
 		newItem = { id: '', description: '', amount: '', category: '' };
 	}
 
-	console.log('script');
+	function getCustomerAccount() {
+
+		selectedCustomerAccount.set(CustomerAccountStore.getCustomerAccountById(formData.id))
+	}
+
 	let formData = {
 		isChecked: false
 	};
@@ -30,40 +36,25 @@
 
 {JSON.stringify($savedTxns)}
 
+{JSON.stringify($selectedCustomerAccount)}
+
 <div class="grid grid-rows-3 grid-flow-col gap-4">
-	<div class="grid gap-4 row-span-3 ">
-		<div class="flex justify-evenly">
-			<label class="label text-sm font-medium w-1/2" for="orgName">Org Name</label>
-			<select class="select select-bordered w-1/2" bind:value={formData.orgId}>
-				<option disabled selected>Select Org</option>
-				<option value={$org.orgId}>{$org.orgName}</option>
-				<option value="2">Org2</option>
-			</select>
-		</div>
+	<div class="grid gap-4 row-span-3">
 		<div class="flex justify-evenly">
 			<label class="label text-sm font-medium w-1/2" for="accNo">Bank Account Number</label>
-			<select class="select select-bordered w-1/2" bind:value={formData.accNo}>
+			<select class="select select-bordered w-1/2" bind:value={formData.id} on:change={getCustomerAccount}>
 				<option disabled selected>Select Account</option>
-				<option value={$org.orgId}>{$org.accNo}</option>
-				<option value="2">123456</option>
+				{#each $customerAccounts as customerAccount}
+					<option value={customerAccount.id}>{customerAccount.bankAccNo}-{customerAccount.bankName}</option>
+				{/each}
 			</select>
-		</div>
-		<div class="flex justify-evenly">
-			<label class="label text-sm font-medium w-1/2" for="bankName">Bank Name</label>
-			<input
-				name="bankName"
-				type="text"
-				placeholder="Type here"
-				class="input input-bordered w-1/2"
-				bind:value={formData.bankName}
-			/>
 		</div>
 	</div>
 	<div class="col-span-2">
-		customerName: {$customerAccount.customerName}
-		bankAccNo: {$customerAccount.bankAccNo}
-		bankName:{$customerAccount.bankName}
-		panId:{$customerAccount.panId}
+		customerName: {$customerAccounts.customerName}
+		bankAccNo: {$customerAccounts.bankAccNo}
+		bankName:{$customerAccounts.bankName}
+		panId:{$customerAccounts.panId}
 	</div>
 </div>
 
