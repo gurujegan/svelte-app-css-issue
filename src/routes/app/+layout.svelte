@@ -7,6 +7,7 @@
 	import Header from '$lib/components/layout/Header.svelte';
 	import { setContext } from 'svelte';
 	import { user } from '$lib/stores/UserStore.js'
+	import BackToParentNav from '$lib/components/elements/BackToParentNav.svelte';
 
 	setContext('user', user);
 

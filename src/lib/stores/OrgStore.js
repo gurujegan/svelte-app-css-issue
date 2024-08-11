@@ -17,6 +17,7 @@ export const orgList = writable([])
 
 export const currentOrg = writable('')
 
+// Setting sample org initially
 addOrg(ORG)
 
 function addOrg(newOrg) {

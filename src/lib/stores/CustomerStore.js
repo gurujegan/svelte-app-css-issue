@@ -2,6 +2,14 @@ import { get, writable } from 'svelte/store';
 import { user } from '$lib/stores/UserStore'
 import { currentOrg } from '$lib/stores/OrgStore.js';
 
+const formElements = [
+    { id: 'customerName', value: 'Customer Name' },
+    { id: 'mobNo', value: 'Mob no' },
+    { id: 'email', value: 'Email' },
+    { id: 'panId', value: 'Pan Id' },
+    { id: 'aadhaarNo', value: 'Aadhaaar No' },
+];
+
 let CUSTOMER = {
 
     id: '',
@@ -9,16 +17,28 @@ let CUSTOMER = {
     mobNo: '',
     email: '',
     panId: '',
-    userId: get(user).userId,
-    createdAt: '',
-    updatedAt: '',
+    aadhaarNo: '',
 }
 
 export const customers = writable([]);
 
-const addCustomer = (newCustomer) => {
+// Setting sample org initially
+for (var i = 0; i < 5; i++) {
+
+    addCustomer({
+        id: '111',
+        customerName: 'LKLKL',
+        mobNo: '98098',
+        email: 'ssfg',
+        panId: 'HJHHJ^&*',
+        aadhaarNo: '*(&&^&989789',
+    })
+}
+
+function addCustomer(newCustomer) {
 
     newCustomer.id = crypto.randomUUID()
+    newCustomer.userId = get(user).userId,
     newCustomer.orgId = get(currentOrg).orgId // Modified store 
     newCustomer.createdAt = Date.now()
 
@@ -36,7 +56,8 @@ const reset = () => {
 };
 
 export default {
+    formElements,
     customers,
     addCustomer,
-    reset
+    reset,
 }

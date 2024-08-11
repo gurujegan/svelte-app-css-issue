@@ -1,12 +1,15 @@
 <script>
 	import LabelInput from '$lib/components/elements/LabelInput.svelte';
-	import { getContext } from 'svelte';
+	import { getContext, setContext } from 'svelte';
 	import { orgList, currentOrg } from '$lib/stores/OrgStore.js';
 	import customerStore from '$lib/stores/CustomerStore.js';
 	import DefaultBodyContainer from '$lib/components/container/DefaultBodyContainer.svelte';
+	import BackToParentNav from '$lib/components/elements/BackToParentNav.svelte';
 
 	let customers = customerStore.customers
 	let user = getContext('user');
+
+	setContext('listPageUrl', 'customers');
 
 	/** @type {import('./$types').PageData} */
 	export let data;
@@ -16,6 +19,7 @@
 		{ id: 'mobNo', value: 'Mob no' },
 		{ id: 'email', value: 'Email' },
 		{ id: 'panId', value: 'Pan Id' },
+		{ id: 'aadhaarNo', value: 'Aadhaaar No' },
 	];
 
 	let newCustomer = {}
@@ -30,6 +34,7 @@
 
 
 <DefaultBodyContainer>
+	<BackToParentNav />
 	<form class="form-control">
 		<div class="grid grid-rows-2 w-full gap-2">
 			<div class="rounded grid grid-cols-2 gap-2">

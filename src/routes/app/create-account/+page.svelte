@@ -13,6 +13,7 @@
 	let formElements = [
 		{ id: 'bankAccNo', value: 'Bank Account No' },
 		{ id: 'bankName', value: 'Bank Name' },
+		{ id: 'ifscCode', value: 'IFSC Code (Optional)'}
 	]
 
 	let formData = {};
