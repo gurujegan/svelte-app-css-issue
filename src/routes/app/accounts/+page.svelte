@@ -1,20 +1,22 @@
 <script>
-	import { writable } from 'svelte/store';
-	import DefaultBodyContainer from '$lib/components/container/DefaultBodyContainer.svelte';
-	import CustomerStore, { customers } from '$lib/stores/CustomerStore';
-	import { goto } from '$app/navigation';
+	import DefaultBodyContainer from "$lib/components/container/DefaultBodyContainer.svelte";
+    import { goto } from "$app/navigation";
+    import CustomerStore, { customers } from '$lib/stores/CustomerStore';
+    import CustomerAccountStore,{ customerAccounts } from '$lib/stores/CustomerAccountStore.js'
+    import { writable } from 'svelte/store';
 
-	let formElements = CustomerStore.formElements;
+
+    let formElements = CustomerStore.formElements;
 </script>
 
 <div class="flex flex-col">
-	<div class="row1 flex justify-end">
-		<button class="btn btn-info w-1/4" on:click={() => goto('create-customer')}
-			>(+) Create Customer</button
+    <div class="row1 flex justify-end">
+        <button class="btn btn-info w-1/4" on:click={() => goto('create-account')}
+			>(+) Create Account</button
 		>
-	</div>
-	<div class="row2">
-		<h1 class="font-bold text-xl">Total Customers: {$customers.length}</h1>
+    </div>
+    <div class="row2">
+		<h1 class="font-bold text-xl">Total Customers: {$customerAccounts.length}</h1>
 		<br />
 
 		<!-- List START-->
@@ -44,7 +46,7 @@
 					</tr>
 				</thead>
 				<tbody>
-					{#each $customers as customer, i}
+					{#each $customerAccounts as customer_account, i}
 						<tr
 							class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600"
 						>
@@ -60,28 +62,22 @@
 							</td>
 
 							<td class="px-6 py-4">
-								{customer.id}
+								{customer_account.id}
 							</td>
 							<td class="px-6 py-4">
-								{customer.customerName}
+								{customer_account.bankAccNo}
 							</td>
 							<td class="px-6 py-4">
-								{customer.mobNo}
+								{customer_account.bankName}
 							</td>
 							<td class="px-6 py-4">
-								{customer.email}
-							</td>
-							<td class="px-6 py-4">
-								{customer.panId}
-							</td>
-							<td class="px-6 py-4">
-								{customer.aadharNo}
+								{customer_account.ifscCode}
 							</td>
 							<td class="px-6 py-4">
 								<a
 									href="#/"
 									class="font-medium text-blue-600 dark:text-blue-500 hover:underline"
-									on:click={() => addRow(customer)}
+									on:click={() => addRow(customer_account)}
 									>Save
 								</a>
 								<a

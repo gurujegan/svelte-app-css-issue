@@ -1,11 +1,14 @@
 <script>
 	import LabelInput from '$lib/components/elements/LabelInput.svelte'
-	import { getContext } from 'svelte'
+	import { getContext, setContext } from 'svelte'
 	import { customers } from '$lib/stores/CustomerStore'
 	import CustomerAccountStore,{ customerAccounts } from '$lib/stores/CustomerAccountStore.js'
 	import DefaultBodyContainer from '$lib/components/container/DefaultBodyContainer.svelte'
+	import BackToParentNav from '$lib/components/elements/BackToParentNav.svelte'
 
 	let user = getContext('user');
+
+	setContext('listPageUrl', 'accounts');
 
 	/** @type {import('./$types').PageData} */
 	export let data;
@@ -37,7 +40,8 @@
 	</div>
 </nav> -->
 
-
+<DefaultBodyContainer>
+	<BackToParentNav />
 	<form class="form-control flex flex-row justify-center">
 		<div class="w-1/2  gap-2">
 			<div class="rounded grid grid-rows-3 gap-2">
@@ -79,6 +83,7 @@
 			</div>
 		</div>
 	</form>
+</DefaultBodyContainer>
 
 
 {JSON.stringify($customerAccounts)}
