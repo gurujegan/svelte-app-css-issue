@@ -170,7 +170,7 @@
 		hover:-translate-y-1 hover:scale-110
 		hover:bg-indigo-500 hover:text-white
 		 duration-300 h-8 rounded-md w-1/2"
-						on:click={createCustomerAccount}
+						on:click={null}
 					>
 						Add
 					</button>
@@ -180,7 +180,7 @@
 		hover:-translate-y-1 hover:scale-110
 		hover:bg-indigo-500 hover:text-white
 		 duration-300 h-8 rounded-md w-1/2"
-						on:click={createCustomerAccount}
+						on:click={null}
 					>
 						Reset
 					</button>

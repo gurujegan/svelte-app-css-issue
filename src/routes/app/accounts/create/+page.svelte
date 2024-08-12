@@ -13,11 +13,7 @@
 	/** @type {import('./$types').PageData} */
 	export let data;
 
-	let formElements = [
-		{ id: 'bankAccNo', value: 'Bank Account No' },
-		{ id: 'bankName', value: 'Bank Name' },
-		{ id: 'ifscCode', value: 'IFSC Code (Optional)'}
-	]
+	let formElements = CustomerAccountStore.formElements;
 
 	let formData = {};
 
@@ -27,18 +23,6 @@
 		formData = {}
 	}
 </script>
-<!-- <nav>
-	<div class="navbar-center">
-		<div class="flex flex-rows justify-center gap-4">
-			<label class="label mb-2 text-sm font-medium" for="cust-name">Customer Name</label>
-			<select class="select select-bordered w-1/4" bind:value={formData.orgId}>
-				<option disabled selected>Select Org</option>
-				<option value={$org.orgId}>{$org.orgName}</option>
-				<option value="2">Org2</option>
-			</select>
-		</div>
-	</div>
-</nav> -->
 
 <DefaultBodyContainer>
 	<BackToParentNav />

@@ -3,6 +3,7 @@ import { user } from '$lib/stores/UserStore'
 import { currentOrg } from '$lib/stores/OrgStore.js';
 
 const formElements = [
+    { id: 'id', value: '#ID' },
     { id: 'customerName', value: 'Customer Name' },
     { id: 'mobNo', value: 'Mob no' },
     { id: 'email', value: 'Email' },
@@ -22,7 +23,7 @@ let CUSTOMER = {
 
 export const customers = writable([]);
 
-// Setting sample org initially
+// Setting sample customers initially
 for (var i = 0; i < 5; i++) {
 
     addCustomer({
