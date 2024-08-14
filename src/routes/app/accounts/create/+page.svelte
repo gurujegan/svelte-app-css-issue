@@ -8,7 +8,7 @@
 
 	let user = getContext('user');
 
-	setContext('listPageUrl', 'accounts');
+	setContext('listPageUrl', '/app/accounts');
 
 	/** @type {import('./$types').PageData} */
 	export let data;

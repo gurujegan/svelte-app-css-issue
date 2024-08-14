@@ -11,7 +11,7 @@
 
 <div class="flex flex-col">
 	<div class="row1 flex justify-end">
-		{JSON.stringify($page)}
+		
 		<button class="btn btn-info w-1/4" on:click={() => goto(`${$page.route.id}/create`)}
 			>(+) Create Customer</button
 		>

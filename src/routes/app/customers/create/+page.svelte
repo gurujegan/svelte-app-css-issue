@@ -2,31 +2,24 @@
 	import LabelInput from '$lib/components/elements/LabelInput.svelte';
 	import { getContext, setContext } from 'svelte';
 	import { orgList, currentOrg } from '$lib/stores/OrgStore.js';
-	import customerStore from '$lib/stores/CustomerStore.js';
+	import CustomerStore from '$lib/stores/CustomerStore.js';
 	import DefaultBodyContainer from '$lib/components/container/DefaultBodyContainer.svelte';
 	import BackToParentNav from '$lib/components/elements/BackToParentNav.svelte';
 
-	let customers = customerStore.customers
+	let customers = CustomerStore.customers
 	let user = getContext('user');
 
-	setContext('listPageUrl', 'customers');
+	setContext('listPageUrl', '/app/customers');
 
 	/** @type {import('./$types').PageData} */
 	export let data;
 
-	let formElements = [
-		{ id: 'customerName', value: 'Customer Name' },
-		{ id: 'mobNo', value: 'Mob no' },
-		{ id: 'email', value: 'Email' },
-		{ id: 'panId', value: 'Pan Id' },
-		{ id: 'aadhaarNo', value: 'Aadhaaar No' },
-	];
-
+	let formElements = CustomerStore.formElements;
 	let newCustomer = {}
 
 	function createCustomerAccount() {
 
-		customerStore.addCustomer(newCustomer)
+		CustomerStore.addCustomer(newCustomer)
 		newCustomer = {}
 	}
 
@@ -68,7 +61,7 @@
 		hover:-translate-y-1 hover:scale-110
 		hover:bg-indigo-500 hover:text-white
 		 duration-300 h-8 rounded-md w-1/2"
-						on:click={customerStore.reset}
+						on:click={CustomerStore.reset}
 					>
 						Reset
 					</button>

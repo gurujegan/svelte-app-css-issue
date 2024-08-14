@@ -36,7 +36,7 @@
 	<div class="row1">
 		<div class="grid grid-rows-3 grid-flow-col gap-4">
 			<div class="grid gap-4 row-span-3">
-				<div class="flex justify-evenly">
+				<div class="flex justify-evenly items-baseline">
 					<label class="label text-sm font-medium w-1/2" for="accNo">Bank Account Number</label>
 					<select
 						class="select select-bordered w-1/2"
@@ -139,8 +139,8 @@
 		</div>
 
 		<div class="w-3/12 flex flex-col items-center">
-            <h1 class="text-2xl">Add New Transaction</h1>
-            <br>
+			<h1 class="text-2xl">Add New Transaction</h1>
+			<br />
 			<form class="form-control">
 				<div class="mb-4">
 					<input
@@ -164,7 +164,7 @@
 						/>
 					</div>
 				{/each}
-                <div class="flex flex-row justify-around w-full gap-2">
+				<div class="flex flex-row justify-around w-full gap-2">
 					<button
 						class="btn btn-info transition ease-in-out delay-150
 		hover:-translate-y-1 hover:scale-110
@@ -184,7 +184,7 @@
 					>
 						Reset
 					</button>
-                </div>
+				</div>
 			</form>
 		</div>
 	</div>
