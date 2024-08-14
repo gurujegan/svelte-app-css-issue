@@ -52,6 +52,11 @@ const getCustomers = (orgId) => {
     return get(customers).filter((newCustomer) => { newCustomer.orgId === orgId })
 }
 
+function getCustomerById(id) {
+    return get(customers).find((newCustomer) => { newCustomer.id == id })
+  }
+  
+
 const reset = () => {
     customers.set([]);
 };
@@ -61,4 +66,5 @@ export default {
     customers,
     addCustomer,
     reset,
+    getCustomerById
 }

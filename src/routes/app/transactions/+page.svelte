@@ -2,6 +2,7 @@
 	import DefaultBodyContainer from '$lib/components/container/DefaultBodyContainer.svelte';
 	import LabelInput from '$lib/components/elements/LabelInput.svelte';
 	import { writable } from 'svelte/store';
+	import CustomerStore, { customers } from '$lib/stores/CustomerStore'
 	import CustomerAccountStore, { customerAccounts } from '$lib/stores/CustomerAccountStore.js';
 
 	/** @type {import('./$types').PageData} */
@@ -10,6 +11,8 @@
 	const savedTxns = writable([]);
 
 	const selectedCustomerAccount = writable({});
+
+	const selectedCustomer = writable({});
 
 	let newItem = { description: '', amount: '', category: '' };
 
@@ -27,16 +30,33 @@
 		selectedCustomerAccount.set(CustomerAccountStore.getCustomerAccountById(formData.id));
 	}
 
+	function getCustomer(){
+		
+		selectedCustomer.set(CustomerStore.getCustomerById(formData.custId))
+	}
+
 	let formData = {
 		isChecked: false
 	};
+
 </script>
 
-<div class="flex flex-col h-full">
-	<div class="row1">
-		<div class="grid grid-rows-3 grid-flow-col gap-4">
-			<div class="grid gap-4 row-span-3">
-				<div class="flex justify-evenly items-baseline">
+<div class="flex flex-col gap-2 h-full">
+	<div class="row1 flex gap-4">
+			<div class="item1 flex flex-col gap-8 justify-center w-1/2">
+				<div class="flex justify-between items-baseline">
+				<label class="label text-sm font-medium" for="cust-name">Customer</label>
+				<select class="select select-bordered w-1/2" 
+				bind:value={formData.custId}
+				on:change={getCustomer}>
+					<option disabled selected>Select Customer</option>
+					{#each $customers as customer}
+					<option value={customer.id}>{customer.customerName} - {customer.panId}</option>
+					{/each}
+				</select>
+				</div>
+
+				<div class="flex justify-between items-baseline">
 					<label class="label text-sm font-medium w-1/2" for="accNo">Bank Account Number</label>
 					<select
 						class="select select-bordered w-1/2"
@@ -52,13 +72,19 @@
 					</select>
 				</div>
 			</div>
-			<div class="col-span-2">
-				customerName: {$customerAccounts.customerName}
+			<div class="item2 w-1/2">
+				<!-- customerName: {$customerAccounts.customerName}
 				bankAccNo: {$customerAccounts.bankAccNo}
 				bankName:{$customerAccounts.bankName}
-				panId:{$customerAccounts.panId}
+				panId:{$customerAccounts.panId} -->
+				<div class="card bg-base-100 shadow-xl">
+					{JSON.stringify($selectedCustomer)}
+					<div class="card-body">
+					  <h2 class="card-title">{$selectedCustomer}</h2>
+					  <p>If a dog chews shoes whose shoes does he choose?</p>
+					</div>
+				  </div>
 			</div>
-		</div>
 	</div>
 
 	<div class="row2 flex flex-row gap-1 h-full">
