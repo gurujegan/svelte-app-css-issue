@@ -167,17 +167,30 @@
 		<div class="w-3/12 flex flex-col items-center">
 			<h1 class="text-2xl">Add New Transaction</h1>
 			<br />
-			<form class="form-control">
-				<div class="mb-4">
+			<form class="form-control gap-4">
+				<div class="">
 					<input
 						type="date"
-						class="input input-bordered focus:bg-orange-100 focus:border-solid focus:border-2 focus:border-sky-500"
+						class="input input-bordered focus:bg-orange-100 focus:border-solid focus:border-2 focus:border-sky-500 w-full"
 						id="birthday"
 						name="Date"
 					/>
 				</div>
-				{#each Object.entries(newItem) as [key, value]}
-					<div class="mb-4">
+				{#each Object.entries(newItem) as [key, value, index]}
+					{#if key == 'amount' }
+						<div class="flex flex-row gap-2 justify-around">
+							<div class="flex gap-2">
+								<input type="radio" value="debit" name="debit" class="radio radio-secondary" checked="checked">
+								<label for="debit">Debit</label>
+							</div>
+
+							<div class="flex gap-2">
+								<input type="radio" value="credit" name="credit" class="radio radio-secondary mb-2">
+								<label for="credit">Credit</label>
+							</div>
+						</div>
+					{/if}
+					<div>
 						<!-- <label class="label mb-2 text-sm font-medium" for={key}
 							>{key[0].toUpperCase() + key.substr(1)}</label
 						> -->
