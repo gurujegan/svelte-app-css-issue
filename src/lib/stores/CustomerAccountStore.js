@@ -29,13 +29,19 @@ const addCustomerAccount = (newCustomerAccount) => {
   customerAccounts.set([...get(customerAccounts), newCustomerAccount]);
 }
 
-function getCustomerAccountById(id) {
+function getCustomerAccountById(accountId) {
 
-  return get(customerAccounts).filter((customerAccount) => customerAccount.id === id)[0]
+  return get(customerAccounts).filter((customerAccount) => customerAccount.id === accountId)[0]
+}
+
+function getCustomerAccountsByCustId(custId) {
+
+  return get(customerAccounts).filter((customerAccount) => customerAccount.custId === custId)
 }
 
 export default {
   addCustomerAccount,
   getCustomerAccountById,
+  getCustomerAccountsByCustId,
   formElements
 }

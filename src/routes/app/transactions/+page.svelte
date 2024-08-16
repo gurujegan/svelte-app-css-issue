@@ -13,6 +13,7 @@
 	const selectedCustomerAccount = writable({});
 
 	const selectedCustomer = writable({});
+	$selectedCustomer.accounts = []
 
 	let newItem = { description: '', amount: '', category: '' };
 
@@ -26,13 +27,18 @@
 		newItem = { description: '', amount: '', category: '' };
 	}
 
-	function getCustomerAccount() {
-		selectedCustomerAccount.set(CustomerAccountStore.getCustomerAccountById(formData.id));
+	function accountOnChange() {
+
+		$selectedCustomerAccount = {}
+		selectedCustomerAccount.set(CustomerAccountStore.getCustomerAccountById(formData.accountId));
 	}
 
-	function getCustomer(){
+	function customerOnChange(){
 		
 		selectedCustomer.set(CustomerStore.getCustomerById(formData.custId))
+
+		$selectedCustomer.accounts = []
+		$selectedCustomer.accounts = CustomerAccountStore.getCustomerAccountsByCustId(formData.custId)
 	}
 
 	let formData = {
@@ -48,7 +54,7 @@
 				<label class="label text-sm font-medium" for="cust-name">Customer</label>
 				<select class="select select-bordered w-1/2" 
 				bind:value={formData.custId}
-				on:change={getCustomer}>
+				on:change={customerOnChange}>
 					<option disabled selected>Select Customer</option>
 					{#each $customers as customer}
 					<option value={customer.id}>{customer.customerName} - {customer.panId}</option>
@@ -60,11 +66,11 @@
 					<label class="label text-sm font-medium w-1/2" for="accNo">Bank Account Number</label>
 					<select
 						class="select select-bordered w-1/2"
-						bind:value={formData.id}
-						on:change={getCustomerAccount}
+						bind:value={formData.accountId}
+						on:change={accountOnChange}
 					>
 						<option disabled selected>Select Account</option>
-						{#each $customerAccounts as customerAccount}
+						{#each $selectedCustomer.accounts as customerAccount}
 							<option value={customerAccount.id}
 								>{customerAccount.bankAccNo}-{customerAccount.bankName}</option
 							>
@@ -77,11 +83,11 @@
 				bankAccNo: {$customerAccounts.bankAccNo}
 				bankName:{$customerAccounts.bankName}
 				panId:{$customerAccounts.panId} -->
-				<div class="card bg-base-100 shadow-xl">
-					{JSON.stringify($selectedCustomer)}
+				<div class="card bg-lime-300 shadow-xl">
+
 					<div class="card-body">
-					  <h2 class="card-title">{$selectedCustomer}</h2>
-					  <p>If a dog chews shoes whose shoes does he choose?</p>
+					  <h2 class="card-title">Customer Name: {$selectedCustomer.customerName}</h2>
+					  <p>Customer Account:{$selectedCustomerAccount.bankAccNo}</p>
 					</div>
 				  </div>
 			</div>

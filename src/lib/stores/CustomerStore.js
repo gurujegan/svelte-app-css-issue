@@ -28,10 +28,10 @@ for (var i = 0; i < 5; i++) {
 
     addCustomer({
         id: '111',
-        customerName: 'LKLKL',
+        customerName: 'test-user-' + i,
         mobNo: '98098',
         email: 'ssfg',
-        panId: 'HJHHJ^&*',
+        panId: 'PANID',
         aadhaarNo: '*(&&^&989789',
     })
 }
@@ -53,7 +53,8 @@ const getCustomers = (orgId) => {
 }
 
 function getCustomerById(id) {
-    return get(customers).find((newCustomer) => { newCustomer.id == id })
+
+    return get(customers).find((newCustomer) => newCustomer.id == id)
   }
   
 
