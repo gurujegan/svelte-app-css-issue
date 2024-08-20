@@ -10,8 +10,11 @@
 
 	const savedTxns = writable([]);
 
-	const selectedCustomerAccount = writable({});
+	const selectedBankAccount = writable({});
 
+	// $: bankAccNo = $selectedBankAccount
+
+	// To hold selected customer & respective accounts
 	const selectedCustomer = writable({});
 	$selectedCustomer.accounts = []
 
@@ -29,14 +32,15 @@
 
 	function accountOnChange() {
 
-		$selectedCustomerAccount = {}
-		selectedCustomerAccount.set(CustomerAccountStore.getCustomerAccountById(formData.accountId));
+		$selectedBankAccount = {}
+		selectedBankAccount.set(CustomerAccountStore.getCustomerAccountById(formData.accountId));
 	}
 
 	function customerOnChange(){
 		
 		selectedCustomer.set(CustomerStore.getCustomerById(formData.custId))
 
+		$selectedBankAccount = {}
 		$selectedCustomer.accounts = []
 		$selectedCustomer.accounts = CustomerAccountStore.getCustomerAccountsByCustId(formData.custId)
 	}
@@ -46,6 +50,8 @@
 	};
 
 </script>
+
+<!-- {JSON.stringify(bankAccNo)} -->
 
 <div class="flex flex-col gap-2 h-full">
 	<div class="row1 flex gap-4">
@@ -69,7 +75,7 @@
 						bind:value={formData.accountId}
 						on:change={accountOnChange}
 					>
-						<option disabled selected>Select Account</option>
+						<option selected>Select Account</option>
 						{#each $selectedCustomer.accounts as customerAccount}
 							<option value={customerAccount.id}
 								>{customerAccount.bankAccNo}-{customerAccount.bankName}</option
@@ -87,7 +93,7 @@
 
 					<div class="card-body">
 					  <h2 class="card-title">Customer Name: {$selectedCustomer.customerName}</h2>
-					  <p>Customer Account:{$selectedCustomerAccount.bankAccNo}</p>
+					  <p>Customer Account:{$selectedBankAccount?.bankAccNo}</p>
 					</div>
 				  </div>
 			</div>
@@ -186,13 +192,13 @@
 					{#if key == 'amount' }
 						<div class="flex flex-row gap-2 justify-around">
 							<div class="flex gap-2">
-								<input type="radio" value="debit" name="debit" class="radio radio-secondary" checked="checked">
-								<label for="debit">Debit</label>
+								<input type="radio" id="debit" value="debit" name="typeOfEntry" class="radio radio-secondary" checked="checked">
+								<label for="debit1">Debit</label>
 							</div>
 
 							<div class="flex gap-2">
-								<input type="radio" value="credit" name="credit" class="radio radio-secondary mb-2">
-								<label for="credit">Credit</label>
+								<input type="radio" id="credit" value="credit" name="typeOfEntry" class="radio radio-secondary mb-2">
+								<label for="credit1">Credit</label>
 							</div>
 						</div>
 					{/if}
