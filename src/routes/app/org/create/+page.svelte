@@ -10,26 +10,29 @@
 
 	let user = getContext('user');
 
-	let newOrg = {};
-
 	let showToast = writable(false);
 
-	const { form, errors, state, isValid, isSubmitting, isValidating, handleChange, handleSubmit, handleReset } = createForm({
+	const { form, errors, state, touched, isValid, isSubmitting, isValidating, handleChange, handleSubmit, handleReset } = createForm({
 		initialValues: {
 			orgName: ''
 		},
 		validationSchema: yup.object().shape({
-			orgName: yup.string().required()
+			orgName: yup
+			.string()
+			.min(3, 'must be at least 3 characters long')
+			.max(20, 'cannot exceed 20 characters')
+			.required(),
 		}),
 		onSubmit: (values) => {
 			alert(JSON.stringify(values));
+			createOrg(values);
 		}
 	});
 
-	async function createOrg(event) {
-		event.preventDefault();
+	function createOrg(values) {
+		// event.preventDefault();
 
-		OrgStore.addOrg(newOrg);
+		OrgStore.addOrg(values);
 
 		showToast.set(true);
 
@@ -38,28 +41,30 @@
 			// goto('/app/create-account');
 		}, 3000);
 
-		newOrg = {};
+		// newOrg = {};
 		//goto('/app/create-account');
 	}
 </script>
 
+{JSON.stringify($isValid)}
+
 <CenteredBodyContainer>
 	<form class="form-control md:w-1/2 w-full rounded flex flex-col gap-2"
-	class:valid={$isValid}
 	on:submit={handleSubmit}>
 		<label class="label text-2xl font-medium">Create Organization </label>
 		<input
+			name="orgName"
 			type="text"
 			placeholder="Org Name"
 			class="input input-bordered w-full"
 			on:keyup={handleChange}
 			bind:value={$form.orgName}
 		/>
-		{#if $errors.orgName}
+		{#if $errors.orgName && $touched.orgName}
 			<small>{$errors.orgName}</small>
 		{/if}
 
-		<button class="btn btn-info" disabled={$isValid}>Create Organization</button>
+		<button class="btn btn-info" disabled={!$isValid}>Create Organization</button>
 	</form>
 
 	{#if $showToast}
