@@ -1,6 +1,9 @@
 <script>
 	export let formElement;
 	export let value;
+	export let handleChange;
+	export let errors;
+	export let touched;
 </script>
 
 {#if formElement.id !== 'id'}
@@ -12,6 +15,10 @@
 			placeholder="Type here"
 			class="input input-bordered w-full mb-4"
 			bind:value
+			on:keyup={handleChange}
 		/>
+		{#if errors[formElement.id] && touched[formElement.id]}
+			<small>{errors[formElement.id]}</small>
+		{/if}
 	</div>
 {/if}
