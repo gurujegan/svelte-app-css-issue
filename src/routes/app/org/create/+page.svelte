@@ -46,7 +46,7 @@
 	}
 </script>
 
-{JSON.stringify($isValid)}
+{JSON.stringify($state)}
 
 <CenteredBodyContainer>
 	<form class="form-control md:w-1/2 w-full rounded flex flex-col gap-2"
