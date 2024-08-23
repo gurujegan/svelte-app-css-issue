@@ -32,10 +32,16 @@
 		},
 		validationSchema: yup.object().shape({
 			customerName: yup.string().required(),
-			mobNo: yup.string().required(),
+			mobNo: yup.string().min(10, 'Enter your 10 digit mobile number').max(10).required(),
 			email: yup.string().email().required(),
-			panId: yup.string().required(),
-			aadhaarNo: yup.string().required()
+			panId: yup
+			.string()
+			.required("Please enter PAN ID")
+			.matches('^[a-zA-Z]{5}[0-9]{4}[a-zA-Z]{1}$', "Invalid Pan Id"),
+			aadhaarNo: yup
+			.string()
+			.required()
+			.matches('^[0-9]{4}[ -]?[0-9]{4}[ -]?[0-9]{4}$', "Invalid Aadhaar"),
 		}),
 		onSubmit: (values) => {
 			alert(JSON.stringify(values));
@@ -54,7 +60,7 @@
 				{#each formElements as formElement}
 					<LabelInput {formElement} {formLib}></LabelInput>
 				{/each}
-				
+
 			</div>
 
 			<div class="flex flex-row justify-around w-full gap-2">

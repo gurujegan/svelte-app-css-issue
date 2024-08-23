@@ -2,7 +2,7 @@
 	export let formElement;
 	export let formLib;
 
-	const { form, errors } = formLib
+	const { form, errors, handleChange } = formLib
 
 </script>
 
@@ -16,8 +16,8 @@
 			placeholder="Type here"
 			class="input input-bordered w-full mb-4"
 			bind:value={$form[formElement.id]}
-			on:click={formLib.handleChange}
-			on:blur={formLib.handleChange}
+			on:click={handleChange}
+			on:blur={handleChange}
 		/>
 
 		{#if $errors[formElement.id]}
