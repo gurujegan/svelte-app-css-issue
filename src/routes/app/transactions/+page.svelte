@@ -4,6 +4,11 @@
 	import { writable } from 'svelte/store';
 	import CustomerStore, { customers } from '$lib/stores/CustomerStore'
 	import CustomerAccountStore, { customerAccounts } from '$lib/stores/CustomerAccountStore.js';
+	import TransactionAccountStore from '$lib/stores/TransactionAccountStore';
+
+	let formElements = TransactionAccountStore.formElements;
+
+
 
 	/** @type {import('./$types').PageData} */
 	export let data;
@@ -37,7 +42,7 @@
 	}
 
 	function customerOnChange(){
-		
+
 		selectedCustomer.set(CustomerStore.getCustomerById(formData.custId))
 
 		$selectedBankAccount = {}
@@ -49,16 +54,17 @@
 		isChecked: false
 	};
 
+
 </script>
 
-<!-- {JSON.stringify(bankAccNo)} -->
+{JSON.stringify($savedTxns)}
 
 <div class="flex flex-col gap-2 h-full">
 	<div class="row1 flex gap-4">
 			<div class="item1 flex flex-col gap-8 justify-center w-1/2">
 				<div class="flex justify-between items-baseline">
 				<label class="label text-sm font-medium" for="cust-name">Customer</label>
-				<select class="select select-bordered w-1/2" 
+				<select class="select select-bordered w-1/2"
 				bind:value={formData.custId}
 				on:change={customerOnChange}>
 					<option disabled selected>Select Customer</option>
@@ -186,18 +192,21 @@
 						class="input input-bordered focus:bg-orange-100 focus:border-solid focus:border-2 focus:border-sky-500 w-full"
 						id="birthday"
 						name="Date"
+						bind:value={newItem.date}
 					/>
 				</div>
 				{#each Object.entries(newItem) as [key, value, index]}
 					{#if key == 'amount' }
 						<div class="flex flex-row gap-2 justify-around">
 							<div class="flex gap-2">
-								<input type="radio" id="debit" value="debit" name="typeOfEntry" class="radio radio-secondary" checked="checked">
+								<input type="radio" id="debit" value="debit" name="typeOfEntry" class="radio radio-secondary" checked="checked"
+								bind:group={newItem.type}>
 								<label for="debit1">Debit</label>
 							</div>
 
 							<div class="flex gap-2">
-								<input type="radio" id="credit" value="credit" name="typeOfEntry" class="radio radio-secondary mb-2">
+								<input type="radio" id="credit" value="credit" name="typeOfEntry" class="radio radio-secondary mb-2"
+								bind:group={newItem.type}>
 								<label for="credit1">Credit</label>
 							</div>
 						</div>
@@ -221,7 +230,7 @@
 		hover:-translate-y-1 hover:scale-110
 		hover:bg-indigo-500 hover:text-white
 		 duration-300 h-8 rounded-md w-1/2"
-						on:click={null}
+						on:click={addNewTxn}
 					>
 						Add
 					</button>
