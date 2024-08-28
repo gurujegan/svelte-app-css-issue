@@ -7,7 +7,7 @@
 	import BackToParentNav from '$lib/components/elements/BackToParentNav.svelte'
 	import { createForm } from 'svelte-forms-lib';
 	import * as yup from 'yup';
-
+	
 	let user = getContext('user');
 
 	setContext('listPageUrl', '/app/accounts');
@@ -19,9 +19,9 @@
 
 	let formData = {};
 
-	function createCustomerAccount() {
+	function createCustomerAccount(values) {
 
-		CustomerAccountStore.addCustomerAccount(formData);
+		CustomerAccountStore.addCustomerAccount(values);
 		formData = {}
 	}
 
