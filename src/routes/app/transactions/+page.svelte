@@ -5,6 +5,7 @@
 	import CustomerStore, { customers } from '$lib/stores/CustomerStore'
 	import CustomerAccountStore, { customerAccounts } from '$lib/stores/CustomerAccountStore.js';
 	import TransactionAccountStore from '$lib/stores/TransactionAccountStore';
+	import ListRecords from '$lib/components/elements/ListRecords.svelte';
 
 	let formElements = TransactionAccountStore.formElements;
 
@@ -38,16 +39,16 @@
 	function accountOnChange() {
 
 		$selectedBankAccount = {}
-		selectedBankAccount.set(CustomerAccountStore.getCustomerAccountById(formData.accountId));
+		selectedBankAccount.set(CustomerAccountStore.getCustomerAccountById(newItem.accountId));
 	}
 
 	function customerOnChange(){
 
-		selectedCustomer.set(CustomerStore.getCustomerById(formData.custId))
+		selectedCustomer.set(CustomerStore.getCustomerById(newItem.custId))
 
 		$selectedBankAccount = {}
 		$selectedCustomer.accounts = []
-		$selectedCustomer.accounts = CustomerAccountStore.getCustomerAccountsByCustId(formData.custId)
+		$selectedCustomer.accounts = CustomerAccountStore.getCustomerAccountsByCustId(newItem.custId)
 	}
 
 	let formData = {
@@ -65,7 +66,7 @@
 				<div class="flex justify-between items-baseline">
 				<label class="label text-sm font-medium" for="cust-name">Customer</label>
 				<select class="select select-bordered w-1/2"
-				bind:value={formData.custId}
+				bind:value={newItem.custId}
 				on:change={customerOnChange}>
 					<option disabled selected>Select Customer</option>
 					{#each $customers as customer}
@@ -78,7 +79,7 @@
 					<label class="label text-sm font-medium w-1/2" for="accNo">Bank Account Number</label>
 					<select
 						class="select select-bordered w-1/2"
-						bind:value={formData.accountId}
+						bind:value={newItem.accountId}
 						on:change={accountOnChange}
 					>
 						<option selected>Select Account</option>
@@ -107,7 +108,8 @@
 
 	<div class="row2 flex flex-row gap-1 h-full">
 		<div class="relative shadow-md sm:rounded-lg w-9/12">
-			<table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+			<ListRecords {formElements} store={savedTxns} />
+			<!-- <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
 				<thead
 					class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400"
 				>
@@ -149,12 +151,12 @@
 							</td>
 							<td class="px-6 py-4">
 								{txn.description}
-								<!-- <input
+								Already Commented <input
                                         type="text"
                                         placeholder="Type here"
                                         class="input input-bordered mb-4"
                                         bind:value={txn.description}
-                                    /> -->
+                                    />
 							</td>
 							<td class="px-6 py-4">
 								{txn.amount}
@@ -179,7 +181,7 @@
 						</tr>
 					{/each}
 				</tbody>
-			</table>
+			</table> -->
 		</div>
 
 		<div class="w-3/12 flex flex-col items-center">
