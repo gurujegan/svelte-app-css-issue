@@ -1,12 +1,13 @@
 <script>
 	import '$lib/assets/css/app.css';
-	import 'tailwindcss/tailwind.css';
+
 	import DefaultBodyContainer from '$lib/components/container/DefaultBodyContainer.svelte';
 	import Footer from '$lib/components/layout/Footer.svelte';
 	import SideBar from '$lib/components/layout/SideBar.svelte';
 	import Header from '$lib/components/layout/Header.svelte';
+	import Main from '$lib/components/layout/Main.svelte';
 	import { setContext } from 'svelte';
-	import { user } from '$lib/stores/UserStore.js'
+	import { user } from '$lib/stores/UserStore.js';
 	import BackToParentNav from '$lib/components/elements/BackToParentNav.svelte';
 
 	setContext('user', user);
@@ -15,18 +16,31 @@
 </script>
 
 <div class="app">
-	<div class="drawer lg:drawer-open">
-		<input id="my-drawer" type="checkbox" class="drawer-toggle" bind:checked={isDrawerOpen} />
-		<div class="drawer-content flex flex-col">
+	<div
+		class="bg-white [&.dark]:bg-main-dark font-jost relative text-[15px] font-normal leading-[1.5] m-0 p-0"
+	>
+		<div
+			class="relative flex flex-col flex-1 xl:ps-[280px] xl:[&.expanded]:ps-[80px] xl:[&.TopExpanded]:ps-[0px] !transition-all !duration-[0.2s] ease-linear delay-[0s] bg-normalBG dark:bg-main-dark"
+			id="content"
+		>
 			<!-- Header -->
 			<Header />
 
 			<!-- Page content here -->
-			<main>
-				<DefaultBodyContainer>
-					<slot />
-				</DefaultBodyContainer>
+			<!-- Main Content -->
+			<main class="bg-normalBG dark:bg-main-dark">
+				<div class=" mx-[30px] min-h-[calc(100vh-195px)] mb-[30px] ssm:mt-[30px] mt-[15px]">
+					<div class="grid grid-cols-12 gap-[25px]">
+						<div class="col-span-12">
+							<div class="p-[25px] bg-white rounded-10 dark:bg-box-dark">
+								<slot />
+								<h1 class="mb-0 text-lg text-dark dark:text-subtitle-dark">Skeleton Page</h1>
+							</div>
+						</div>
+					</div>
+				</div>
 			</main>
+			<!-- End: Main Content -->
 
 			<!-- Footer -->
 			<Footer />
@@ -35,42 +49,3 @@
 		<SideBar />
 	</div>
 </div>
-
-<style>
-	.app {
-		display: flex;
-		flex-direction: column;
-		min-height: 100vh;
-	}
-
-	main {
-		flex: 1;
-		display: flex;
-		flex-direction: column;
-		padding: 1rem;
-		width: 100%;
-		align-items: center	;
-		/* max-width: 64rem; */
-		/* margin: 0 auto; */
-		box-sizing: border-box;
-		/* margin-left: 264px; */
-	}
-
-	footer {
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		align-items: center;
-		padding: 12px;
-	}
-
-	footer a {
-		font-weight: bold;
-	}
-
-	@media (min-width: 480px) {
-		footer {
-			padding: 12px 0;
-		}
-	}
-</style>

@@ -72,5 +72,5 @@
 	</form>
 </DefaultBodyContainer>
 
-{JSON.stringify($currentOrg.orgId)}
-{JSON.stringify($customers)}
+<!-- {JSON.stringify($currentOrg.orgId)}
+{JSON.stringify($customers)} -->
