@@ -1,6 +1,20 @@
 <script>
 	import userProfile from '$lib/assets/images/thumbs.png';
 	import DarkMode from '../DarkMode.svelte';
+	import logoDarkImg from '$lib/assets/images/logos/logo-dark.png'
+	import logoWhiteImg from '$lib/assets/images/logos/logo-white.png'
+	import appDeveloperImg from '$lib/assets/images/messages/app-developer.png'
+	import productImg from '$lib/assets/images/messages/product.png'
+	import uiuxDesignImg from '$lib/assets/images/messages/ui-ux-design.png'
+	import webDesignseImg from '$lib/assets/images/messages/web-design-software-engineering.png'
+	import fireCircleImg from '$lib/assets/images/messages/firecircle-icon-graphic-branding-graphic-design-large-white.png'
+	import appImg from '$lib/assets/images/messages/app.png'
+	import audioImg from '$lib/assets/images/settings/audio.png'
+	import paymentImg from '$lib/assets/images/settings/payment.png'
+	import featureImg from '$lib/assets/images/settings/feature.png'
+	import themeImg from '$lib/assets/images/settings/theme.png'
+	import designImg from '$lib/assets/images/settings/design.png'
+	import fileImg from '$lib/assets/images/settings/file.png'
 </script>
 
 <header
@@ -20,10 +34,10 @@
 				>
 					<a href="index.html" class="block text-center">
 						<div class="logo-full">
-							<img class="md:ps-[15px] dark:hidden" src="images/logos/logo-dark.png" alt="Logo" />
+							<img class="md:ps-[15px] dark:hidden" src="{logoDarkImg}" alt="Logo" />
 							<img
 								class="md:ps-[15px] hidden dark:block"
-								src="images/logos/logo-white.png"
+								src="{logoWhiteImg}"
 								alt="Logo"
 							/>
 						</div>
@@ -129,7 +143,7 @@
 													></span>
 													<img
 														class="object-cover w-[40px] h-[40px] bg-light-extra rounded-full"
-														src="images/messages/app-developer.png"
+														src="{appDeveloperImg}"
 													/>
 												</div>
 												<figcaption class="w-full -mt-1 text-start">
@@ -167,7 +181,7 @@
 													></span>
 													<img
 														class="object-cover w-[40px] h-[40px] bg-light-extra rounded-full"
-														src="images/messages/product.png"
+														src="{productImg}"
 													/>
 												</div>
 												<figcaption class="w-full -mt-1 text-start">
@@ -205,7 +219,7 @@
 													></span>
 													<img
 														class="object-cover w-[40px] h-[40px] bg-light-extra rounded-full"
-														src="images/messages/ui-ux-design.png"
+														src="{uiuxDesignImg}"
 													/>
 												</div>
 												<figcaption class="w-full -mt-1 text-start">
@@ -243,7 +257,7 @@
 													></span>
 													<img
 														class="object-cover w-[40px] h-[40px] bg-light-extra rounded-full"
-														src="images/messages/web-design-software-engineering.png"
+														src="{webDesignseImg}"
 													/>
 												</div>
 												<figcaption class="w-full -mt-1 text-start">
@@ -281,7 +295,7 @@
 													></span>
 													<img
 														class="object-cover w-[40px] h-[40px] bg-light-extra rounded-full"
-														src="images/messages/firecircle-icon-graphic-branding-graphic-design-large-white.png"
+														src="{fireCircleImg}"
 													/>
 												</div>
 												<figcaption class="w-full -mt-1 text-start">
@@ -319,7 +333,7 @@
 													></span>
 													<img
 														class="object-cover w-[40px] h-[40px] bg-light-extra rounded-full"
-														src="images/messages/app.png"
+														src="{appImg}"
 													/>
 												</div>
 												<figcaption class="w-full -mt-1 text-start">
@@ -589,7 +603,7 @@
 										<figure
 											class="flex items-start px-4 py-3 mb-0 hover:shadow-action dark:hover:shadow-[0_5px_30px_rgba(1,4,19,.60)]"
 										>
-											<img class="h-fit me-4" src="images/settings/audio.png" alt="audio" />
+											<img class="h-fit me-4" src="{audioImg}" alt="audio" />
 											<figcaption>
 												<h1
 													class="mb-0.5 -mt-1 text-[15px] font-medium capitalize text-dark dark:text-title-dark text-start"
@@ -606,7 +620,7 @@
 										<figure
 											class="flex items-start px-4 py-3 mb-0 hover:shadow-action dark:hover:shadow-[0_5px_30px_rgba(1,4,19,.60)]"
 										>
-											<img class="h-fit me-4" src="images/settings/payment.png" alt="payment" />
+											<img class="h-fit me-4" src="{paymentImg}" alt="payment" />
 											<figcaption>
 												<h1
 													class="mb-0.5 -mt-1 text-[15px] font-medium capitalize text-dark dark:text-title-dark text-start"
@@ -623,7 +637,7 @@
 										<figure
 											class="flex items-start px-4 py-3 mb-0 hover:shadow-action dark:hover:shadow-[0_5px_30px_rgba(1,4,19,.60)]"
 										>
-											<img class="h-fit me-4" src="images/settings/feature.png" alt="feature" />
+											<img class="h-fit me-4" src="{featureImg}" alt="feature" />
 											<figcaption>
 												<h1
 													class="mb-0.5 -mt-1 text-[15px] font-medium capitalize text-dark dark:text-title-dark text-start"
@@ -640,7 +654,7 @@
 										<figure
 											class="flex items-start px-4 py-3 mb-0 hover:shadow-action dark:hover:shadow-[0_5px_30px_rgba(1,4,19,.60)]"
 										>
-											<img class="h-fit me-4" src="images/settings/theme.png" alt="theme" />
+											<img class="h-fit me-4" src="{themeImg}" alt="theme" />
 											<figcaption>
 												<h1
 													class="mb-0.5 -mt-1 text-[15px] font-medium capitalize text-dark dark:text-title-dark text-start"
@@ -657,7 +671,7 @@
 										<figure
 											class="flex items-start px-4 py-3 mb-0 hover:shadow-action dark:hover:shadow-[0_5px_30px_rgba(1,4,19,.60)]"
 										>
-											<img class="h-fit me-4" src="images/settings/payment.png" alt="payment" />
+											<img class="h-fit me-4" src="{paymentImg}" alt="payment" />
 											<figcaption>
 												<h1
 													class="mb-0.5 -mt-1 text-[15px] font-medium capitalize text-dark dark:text-title-dark text-start"
@@ -674,7 +688,7 @@
 										<figure
 											class="flex items-start px-4 py-3 mb-0 hover:shadow-action dark:hover:shadow-[0_5px_30px_rgba(1,4,19,.60)]"
 										>
-											<img class="h-fit me-4" src="images/settings/design.png" alt="design" />
+											<img class="h-fit me-4" src="{designImg}" alt="design" />
 											<figcaption>
 												<h1
 													class="mb-0.5 -mt-1 text-[15px] font-medium capitalize text-dark dark:text-title-dark text-start"
@@ -691,7 +705,7 @@
 										<figure
 											class="flex items-start px-4 py-3 mb-0 hover:shadow-action dark:hover:shadow-[0_5px_30px_rgba(1,4,19,.60)]"
 										>
-											<img class="h-fit me-4" src="images/settings/file.png" alt="file" />
+											<img class="h-fit me-4" src="{fileImg}" alt="file" />
 											<figcaption>
 												<h1
 													class="mb-0.5 -mt-1 text-[15px] font-medium capitalize text-dark dark:text-title-dark text-start"
@@ -708,7 +722,7 @@
 										<figure
 											class="flex items-start px-4 py-3 mb-0 hover:shadow-action dark:hover:shadow-[0_5px_30px_rgba(1,4,19,.60)]"
 										>
-											<img class="h-fit me-4" src="images/settings/audio.png" alt="audio" />
+											<img class="h-fit me-4" src="{audioImg}" alt="audio" />
 											<figcaption>
 												<h1
 													class="mb-0.5 -mt-1 text-[15px] font-medium capitalize text-dark dark:text-title-dark text-start"
@@ -727,7 +741,7 @@
 					</div>
 				</li>
 				<li>
-					<div class="relative" data-te-dropdown-ref>
+					<!-- <div class="relative" data-te-dropdown-ref>
 						<button
 							id="flags"
 							data-te-dropdown-toggle-ref
@@ -777,7 +791,7 @@
 								</li>
 							</ul>
 						</div>
-					</div>
+					</div> -->
 				</li>
 				<li>
 					<div class="relative" data-te-dropdown-ref>
@@ -814,7 +828,7 @@
 								>
 									<img
 										class="w-8 h-8 rounded-full bg-regular"
-										src="images/avatars/thumbs.png"
+										src="{userProfile}"
 										alt="user"
 									/>
 									<figcaption>
