@@ -64,9 +64,14 @@
 			</div>
 
 			<div class="flex flex-row justify-around w-full gap-2">
-				<button class="btn btn-info rounded-md w-1/2"> Create Customer </button>
+				<button class="btn btn-info rounded-md w-1/2
+				capitalize bg-primary hover:bg-primary-hbr border-solid border-1 border-primary text-white dark:text-title-dark text-[14px] font-semibold leading-[22px] inline-flex items-center justify-center rounded-[4px] px-[20px] h-[44px] [&amp;>span]:inline-flex gap-[6px] transition duration-300 ease-in-out">
+				 Create Customer </button>
 
-				<button class="btn btn-info rounded-md w-1/2" on:click={formLib.handleReset}> Reset </button>
+				<button class="btn btn-info rounded-md w-1/2
+				px-[30px] h-[44px] text-body dark:text-subtitle-dark bg-regular dark:bg-box-dark-up border-regular dark:border-box-dark-up font-medium rounded-4 text-sm sm:w-auto text-center inline-flex items-center justify-center capitalize transition-all duration-300 ease-linear hover:opacity-60
+				"data-te-ripple-init="" data-te-ripple-color="dark" style="" on:click={formLib.handleReset}>
+				 Reset </button>
 			</div>
 		</div>
 	</form>
