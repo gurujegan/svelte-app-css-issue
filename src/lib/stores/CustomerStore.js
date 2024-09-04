@@ -3,7 +3,7 @@ import { user } from '$lib/stores/UserStore'
 import { currentOrg } from '$lib/stores/OrgStore.js';
 
 const formElements = [
-    { id: 'id', value: '#ID' },
+    // { id: 'id', value: '#ID' },
     { id: 'customerName', value: 'Customer Name', icon: 'uil uil-user' },
     { id: 'mobNo', value: 'Mob no', icon: 'la la-mobile' },
     { id: 'email', value: 'Email', icon: 'uil uil-envelope' },

@@ -5,7 +5,7 @@ export default {
   content: [
     "./src/**/*.js",
     "./src/**/*.html",
-     "./src/**/*.{html,js}",
+     "./src/**/*.{html,js,svelte,ts}",
     ],
   theme: {
     extend: {
