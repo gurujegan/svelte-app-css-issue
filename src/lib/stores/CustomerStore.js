@@ -4,11 +4,11 @@ import { currentOrg } from '$lib/stores/OrgStore.js';
 
 const formElements = [
     { id: 'id', value: '#ID' },
-    { id: 'customerName', value: 'Customer Name' },
-    { id: 'mobNo', value: 'Mob no' },
-    { id: 'email', value: 'Email' },
-    { id: 'panId', value: 'Pan Id' },
-    { id: 'aadhaarNo', value: 'Aadhaaar No' },
+    { id: 'customerName', value: 'Customer Name', icon: 'uil uil-user' },
+    { id: 'mobNo', value: 'Mob no', icon: 'la la-mobile' },
+    { id: 'email', value: 'Email', icon: 'uil uil-envelope' },
+    { id: 'panId', value: 'Pan Id', icon: 'la la-address-card' },
+    { id: 'aadhaarNo', value: 'Aadhaaar No', icon: 'la la-address-card' },
 ];
 
 let CUSTOMER = {
@@ -40,7 +40,7 @@ function addCustomer(newCustomer) {
 
     newCustomer.id = crypto.randomUUID()
     newCustomer.userId = get(user).userId,
-    newCustomer.orgId = get(currentOrg).orgId // Modified store 
+    newCustomer.orgId = get(currentOrg).orgId // Modified store
     newCustomer.createdAt = Date.now()
 
     newCustomer = { ...CUSTOMER, ...newCustomer }
@@ -56,7 +56,7 @@ function getCustomerById(id) {
 
     return get(customers).find((newCustomer) => newCustomer.id == id)
   }
-  
+
 
 const reset = () => {
     customers.set([]);
