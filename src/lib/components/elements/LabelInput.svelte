@@ -8,17 +8,20 @@
 
 {#if formElement.id !== 'id'}
 
-	<div class="w-full">
-		<label class="label mb-2 text-sm font-medium" for={formElement.id}>{formElement.value}</label>
-		<input
-			name={formElement.id}
-			type="text"
-			placeholder="Type here"
-			class="input input-bordered w-full mb-4"
-			bind:value={$form[formElement.id]}
-			on:click={handleChange}
-			on:blur={handleChange}
-		/>
+	<div class="w-full pb-4">
+		<label class="label mb-2 text-sm font-medium
+		inline-flex items-center w-[178px] mb-2 text-sm font-medium capitalize text-dark dark:text-title-dark" for={formElement.id}>{formElement.value}</label>
+		<div class="flex items-center flex-1">
+			<div
+			   class="w-full rounded-4 border-normal border-1 text-[15px] dark:bg-box-dark-up dark:border-box-dark-up px-[15px] py-[12px] min-h-[50px] focus:ring-primary focus:border-primary gap-[12px]  flex items-center">
+			   <span class="inline-flex items-center text-sm text-light dark:text-subtitle-dark me-[8px]">
+				  <i class="uil uil-user text-[16px]"></i>
+			   </span>
+			   <input name={formElement.id} type="text" placeholder="Type here" class="
+			   outline-none placeholder:text-[#A0A0A0] text-body dark:text-subtitle-dark w-full bg-transparent"
+				  bind:value={$form[formElement.id]} on:click={handleChange} on:blur={handleChange} />
+			</div>
+		 </div>
 
 		{#if $errors[formElement.id]}
 			<small>{$errors[formElement.id]}</small>
