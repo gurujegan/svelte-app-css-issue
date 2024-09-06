@@ -52,20 +52,37 @@
 		<div class="w-1/2  gap-2">
 			<div class="rounded grid grid-rows-3 gap-2">
 				<div class="w-full">
-		
-					<label class="label mb-2 text-sm font-medium" for="cust-name">Customer</label>
-					<select class="select select-bordered w-full" name="custId"
-					on:change={handleChange} bind:value={$form.custId}>
-						<!-- <option disabled selected>Select Customer</option> -->
-						 <option/>
-						{#each $customers as customer}
-						<option value={customer.id}>{customer.customerName} - {customer.panId}</option>
-						<!-- <option value={customer.id}>{customer.customerName}</option> -->
-						{/each}
-					</select>
-					{#if $errors.custId}
-						<small>{$errors.custId}</small>
-					{/if}
+
+					<div class="hidden opacity-100 transition-opacity duration-150 ease-linear data-[te-tab-active]:block" id="tabs-home3" role="tabpanel" data-te-tab-active aria-labelledby="tabs-home-tab3">
+						<div class="flex flex-col gap-y-5">
+						   <div class="pb-4">
+					 
+							<label class="label mb-2 text-sm font-medium
+							inline-flex items-center w-[178px] mb-2 text-sm font-medium capitalize text-dark dark:text-title-dark" for="">Customer Name</label>
+							  <div>
+								
+								 <select data-te-select-init data-te-select-size="lg">
+									{#each $customers as customer}
+						   <option value={customer.id}>{customer.customerName} - {customer.panId}</option>
+						   <!-- <option value={customer.id}>{customer.customerName}</option> -->
+						   {/each}
+									<option value="1">Option 1</option>
+									<option value="2">Option 2</option>
+									<option value="3">Option 3</option>
+									<option value="4">Option 4</option>
+									<option value="5">Option 5</option>
+									<option value="6">Option 6</option>
+								 </select>
+								 {#if $errors.custId}
+						   <small>{$errors.custId}</small>
+						   {/if}
+							  </div>
+					 
+					 
+						   </div>
+						</div>
+					 </div>
+					  
 				</div>
 
 				{#each formElements as formElement}
