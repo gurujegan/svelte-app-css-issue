@@ -174,7 +174,7 @@ function redirectIndexPage(selector) {
     form.addEventListener('submit', function (e) {
       e.preventDefault();
       if (validateForm()) {
-        window.location.href = 'index.html';
+        window.location.href = "/";
       }
     });
 

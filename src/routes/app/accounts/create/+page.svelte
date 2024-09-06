@@ -52,6 +52,7 @@
 		<div class="w-1/2  gap-2">
 			<div class="rounded grid grid-rows-3 gap-2">
 				<div class="w-full">
+		
 					<label class="label mb-2 text-sm font-medium" for="cust-name">Customer</label>
 					<select class="select select-bordered w-full" name="custId"
 					on:change={handleChange} bind:value={$form.custId}>

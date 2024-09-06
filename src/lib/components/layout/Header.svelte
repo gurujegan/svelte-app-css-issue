@@ -32,7 +32,7 @@
 				<div
 					class="flex md:w-[190px] xs:w-[170px] max-xs:w-[100px] max-md:pe-[30px] max-xs:pe-[15px] border-e border-[#edf2f9] dark:border-box-dark-up logo-wrapper items-center h-[71px] dark:bg-box-dark-up"
 				>
-					<a href="index.html" class="block text-center">
+					<a href="/" class="block text-center">
 						<div class="logo-full">
 							<img class="md:ps-[15px] dark:hidden" src="{logoDarkImg}" alt="Logo" />
 							<img
@@ -904,7 +904,7 @@
 								</ul>
 								<a
 									class="flex items-center justify-center text-sm font-medium bg-normalBG dark:bg-box-dark-up h-[50px] text-light hover:text-primary dark:hover:text-subtitle-dark dark:text-title-dark mx-[-15px] mb-[-15px] rounded-b-6 gap-[6px]"
-									href="log-in.html"
+									href="/login"
 								>
 									<i class="uil uil-sign-out-alt"></i> Sign Out</a
 								>

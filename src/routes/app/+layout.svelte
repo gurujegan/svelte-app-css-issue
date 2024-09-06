@@ -1,14 +1,12 @@
 <script>
-	import '$lib/assets/css/app.css';
+	import '$lib/assets/css/app.css';	
+	
 
-	import DefaultBodyContainer from '$lib/components/container/DefaultBodyContainer.svelte';
 	import Footer from '$lib/components/layout/Footer.svelte';
 	import SideBar from '$lib/components/layout/SideBar.svelte';
 	import Header from '$lib/components/layout/Header.svelte';
-	import Main from '$lib/components/layout/Main.svelte';
 	import { setContext } from 'svelte';
 	import { user } from '$lib/stores/UserStore.js';
-	import BackToParentNav from '$lib/components/elements/BackToParentNav.svelte';
 
 	setContext('user', user);
 
